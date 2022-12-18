@@ -3,7 +3,6 @@
     internal class Program
     {
         static void Main()
-
         {
             int guessAsInt;
             int secretNumber = new Random().Next(0, 100);
@@ -14,8 +13,6 @@
             // loop on if the tryparse is succesful or not
             do
             {
-                
-
                 do
                 {
                     Console.WriteLine($"Current Chances:{chances}");
@@ -34,7 +31,6 @@
                 {
                     Console.WriteLine("You are more then 5 off!");
                 }
-
                 if (secretNumber == guessAsInt)
                 {
                     Console.WriteLine("You have won ze game!");
@@ -42,16 +38,12 @@
                     chances = 5;
                     secretNumber = new Random().Next(0, 100);
                 }
-
                 if (chances == 0)
                 {
                     Console.WriteLine("You Lose!");
                     chances = -1;
-                    
                 }
-
             } while (chances > -1);
         }
-
     }
 }
