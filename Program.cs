@@ -20,6 +20,7 @@
                     isParsable = Int32.TryParse(Console.ReadLine(), out guessAsInt);
                 }
                 while (isParsable == false);
+
                 chances--;
                 // calculates the difference between the guess and secret number to determine if we are in range or out of range
                 result = Math.Abs(guessAsInt - secretNumber);
@@ -27,10 +28,12 @@
                 {
                     Console.WriteLine($"You are {result} off!");
                 }
+
                 else
                 {
                     Console.WriteLine("You are more then 5 off!");
                 }
+
                 if (secretNumber == guessAsInt)
                 {
                     Console.WriteLine("You have won ze game!");
@@ -38,11 +41,13 @@
                     chances = 5;
                     secretNumber = new Random().Next(0, 100);
                 }
+
                 if (chances == 0)
                 {
                     Console.WriteLine("You Lose!");
                     chances = -1;
                 }
+
             } while (chances > -1);
         }
     }
