@@ -31,7 +31,16 @@
 
                 else
                 {
-                    Console.WriteLine("You are more then 5 off!");
+                    if(guessAsInt > secretNumber)
+                    {
+                        Console.WriteLine("Too High!");
+                    }
+
+                    if(guessAsInt < secretNumber)
+                    {
+                        Console.WriteLine("Too low!");
+                    }
+
                 }
 
                 if (secretNumber == guessAsInt)
