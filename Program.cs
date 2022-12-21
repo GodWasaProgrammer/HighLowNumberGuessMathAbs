@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-namespace HighLowNumberGuessMathAbs
+﻿namespace HighLowNumberGuessMathAbs
 {
     internal class Program
     {
