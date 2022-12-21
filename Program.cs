@@ -7,8 +7,8 @@
             int guessAsInt;
             int range = 5;
             int result;
-            int MaxGuess = 101;
-            int LowestGuess = 0;
+            const int MAXGUESS = 101;
+            const int LOWESTGUESS = 0;
             bool isParsable;
             string gameLoop;
             do
