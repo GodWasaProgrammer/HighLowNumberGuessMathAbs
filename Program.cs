@@ -7,16 +7,17 @@
             int guessAsInt;
             int range = 5;
             int result;
-            const int MAXGUESS = 101;
-            const int LOWESTGUESS = 0;
+            const int MAXVALUE = 101;
+            const int LOWESTVALUE = 0;
             bool isParsable;
             string gameLoop;
             do
             {
                 int chances;
-                int secretNumber = new Random().Next(0, 101);
+                int secretNumber = new Random().Next(MAXVALUE);
                 chances = 5;
-                Console.BackgroundColor = ConsoleColor.Green;
+
+                Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("Welcome to our number guessing game. \n Make a guess between zero and hundred");
                 do
                 {
@@ -31,9 +32,9 @@
                             Console.WriteLine("Your input was not acceptable. try again");
                         }
 
-                        if (guessAsInt > MaxGuess || guessAsInt < LowestGuess)
+                        if (guessAsInt > MAXVALUE || guessAsInt < LOWESTVALUE)
                         {
-                            Console.WriteLine("You were so far off you might aswell be in Narnia... \n Guess should be between 0 and 100!");
+                            Console.WriteLine($"You were so far off you might aswell be in Narnia... \n Guess should be between {LOWESTVALUE} and {MAXVALUE}!");
                             isParsable = false;
                         }
 
@@ -42,45 +43,49 @@
 
                     chances--;
                     // calculates the difference between the guess and secret number to determine if we are in range or out of range
-                    result = Math.Abs(guessAsInt - secretNumber);
+
                     if (secretNumber == guessAsInt)
                     {
                         Console.WriteLine("You have won ze game!");
                         break;
                     }
 
-                    else
+                    result = Math.Abs(guessAsInt - secretNumber);
+
+                    if (result < range)
                     {
-                        if (result < range && guessAsInt > secretNumber)
+                        if (guessAsInt > secretNumber)
                         {
-                            Console.WriteLine($"Too High! You are {result} off!");
+                            Console.WriteLine($"Too High! But close... You are {result} off!");
                         }
 
-                        if (result < range && guessAsInt < secretNumber)
+                        if (guessAsInt < secretNumber)
                         {
-                            Console.WriteLine($"Too Low! You are {result} off!");
+                            Console.WriteLine($"Too Low! But close... You are {result} off!");
+                        }
+                    }
+
+                    if (result > range)
+                    {
+                        if (guessAsInt > secretNumber)
+                        {
+                            Console.WriteLine("Too High!");
                         }
 
-                        else
+                        if (guessAsInt < secretNumber)
                         {
-                            if (guessAsInt > secretNumber && result > range)
-                            {
-                                Console.WriteLine("Too High!");
-                            }
-
-                            if (guessAsInt < secretNumber && result > range)
-                            {
-                                Console.WriteLine("Too low!");
-                            }
-
-                        }
-                        if (chances == 0)
-                        {
-                            Console.BackgroundColor = ConsoleColor.DarkRed;
-                            Console.WriteLine("You Lose!");
+                            Console.WriteLine("Too low!");
                         }
 
                     }
+
+                    if (chances == 0)
+                    {
+
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("You Lose!");
+                    }
+
                 } while (chances > 0);
 
                 Console.BackgroundColor = ConsoleColor.Black;
