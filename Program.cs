@@ -38,12 +38,12 @@
                             isParsable = false;
                         }
 
-                    }
-                    while (isParsable == false);
+                    } while (isParsable == false);
 
+                    // You lost a chance cause you failed your guess
                     chances--;
-                    // calculates the difference between the guess and secret number to determine if we are in range or out of range
 
+                    // calculates the difference between the guess and secret number to determine if we are in range or out of range
                     if (secretNumber == guessAsInt)
                     {
                         Console.WriteLine("You have won ze game!");
@@ -66,6 +66,7 @@
                             }
 
                         }
+
                         // if our guess is under our secret number
                         if (guessAsInt < secretNumber)
                         {
@@ -81,7 +82,7 @@
                         // If you run out of chances you lose
                         if (chances == 0)
                         {
-                            
+
                             Console.WriteLine("You Lose!");
                         }
 
@@ -89,9 +90,9 @@
 
                 } while (chances > 0);
 
-                
                 Console.WriteLine("Would you like to play again? if so, type y");
                 gameLoop = Console.ReadLine();
+
             } while (gameLoop == "y");
 
         }
