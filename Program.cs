@@ -2,13 +2,13 @@
 {
     internal class Program
     {
+        const int MAXVALUE = 100;
+        const int LOWESTVALUE = 0;
         static void Main()
         {
             int guessAsInt;
             int range = 5;
             int result;
-            const int MAXVALUE = 100;
-            const int LOWESTVALUE = 0;
             bool isParsable;
             string gameLoop;
             do
