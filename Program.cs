@@ -35,12 +35,12 @@
                         if (guessAsInt > MAXVALUE || guessAsInt < LOWESTVALUE)
                         {
                             Console.WriteLine($"You were so far off you might aswell be in Narnia... \n Guess should be between {LOWESTVALUE} and {MAXVALUE}!");
-                            isParsable = false;
+                            
                         }
 
                     } while (isParsable == false);
 
-                    // You lost a chance cause you failed your guess
+                    // You lost a chance because parse passed.
                     chances--;
 
                     // calculates the difference between the guess and secret number to determine if we are in range or out of range
