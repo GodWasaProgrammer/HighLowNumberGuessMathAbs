@@ -11,7 +11,7 @@
             do
             {
                 int chances = 5;
-                int secretNumber = new Random().Next(MAXVALUE);
+                int secretNumber = new Random().Next(MAXVALUE +1);
                 
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine($"Welcome to our number guessing game. \n Make a guess between {LOWESTVALUE} and {MAXVALUE}");
