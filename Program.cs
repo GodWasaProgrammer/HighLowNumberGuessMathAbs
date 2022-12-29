@@ -4,28 +4,29 @@
     {
         const int MAXVALUE = 100;
         const int LOWESTVALUE = 0;
+        const int RANGE = 5;
+        
         static void Main()
         {
-            int guessAsInt;
-            int range = 5;
-            int result;
-            bool isParsable;
-            string gameLoop;
             do
             {
-                int chances;
+                int chances = 5;
                 int secretNumber = new Random().Next(MAXVALUE);
-                chances = 5;
-
+                
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("Welcome to our number guessing game. \n Make a guess between zero and hundred");
+                Console.WriteLine($"Welcome to our number guessing game. \n Make a guess between {LOWESTVALUE} and {MAXVALUE}");
+
                 do
                 {
+                    int guessAsInt;
                     Console.WriteLine($"Current Chances:{chances}");
+
+                    bool isParsable;
                     // loop on if the tryparse is succesful or not
                     do
                     {
                         Console.WriteLine("Input your guess");
+
                         isParsable = Int32.TryParse(Console.ReadLine(), out guessAsInt);
                         if (isParsable == false)
                         {
@@ -52,6 +53,7 @@
 
                     else
                     {
+                        int result;
                         // calculates the difference between the guess and secret number to determine if we are in range or out of range
                         result = Math.Abs(guessAsInt - secretNumber);
 
@@ -60,7 +62,7 @@
                         {
                             Console.WriteLine("Too high!");
                             // if the difference between the guess and the secret number is less then our predetermined range of 5
-                            if (result < range)
+                            if (result < RANGE)
                             {
                                 Console.Write($"But you are close {result} off!");
                             }
@@ -72,28 +74,33 @@
                         {
                             Console.WriteLine("Too low!");
                             // if the difference between the guess and the secret number is less then our predetermined range of 5
-                            if (result < range)
+                            if (result < RANGE)
                             {
                                 Console.Write($"But you are close {result} off!");
                             }
 
                         }
 
-                        // If you run out of chances you lose
-                        if (chances == 0)
-                        {
-
-                            Console.WriteLine("You Lose!");
-                        }
-
                     }
 
-                } while (chances > 0);
+                } 
+                while (chances > 0);
+
+                // If you run out of chances you lose
+                if (chances == 0)
+                {
+                    Console.WriteLine("You Lose!");
+                }
 
                 Console.WriteLine("Would you like to play again? if so, type y");
-                gameLoop = Console.ReadLine();
 
-            } while (gameLoop == "y");
+                if (Console.ReadLine().ToLower() != "y")
+                {
+                    break;
+                }
+
+            } 
+            while (true);
 
         }
     }
